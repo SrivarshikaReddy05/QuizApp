@@ -1,25 +1,22 @@
 package com.quizapp.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 
-@Data
 @Entity
-public class Question {
-	
+@Data
+public class Quiz {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String QuestionTitle;
-	private String option1;
-	private String option2;
-	private String option3;
-	private String option4;
-	private String ans;
-	private String difficultyLevel;
-	private String category;
-	
+	private String title;
+	@ManyToMany
+	private List<Question> questions;
 }
